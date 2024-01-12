@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zad2-deployment
+  namespace: zad2-ns
+  labels:
+    app: zad2-server
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: zad2-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavaialable: 2
+      maxSurge: 5
+  template:
+    metadata:
+      labels:
+        app: zad2-server
+    spec:
+      containers:
+      - name: zad2-server
+        # Upload image first
+        image: nginx:1.14.2
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
