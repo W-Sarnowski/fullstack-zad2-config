@@ -50,7 +50,7 @@ Name:                     zad2-node-service
 Namespace:                zad2-ns
 Labels:                   <none>
 Annotations:              <none>
-Selector:                 app.kubernetes.io/name=zad2,app=zad2-server
+Selector:                 app=zad2-server
 Type:                     NodePort
 IP Family Policy:         SingleStack
 IP Families:              IPv4
@@ -59,7 +59,7 @@ IPs:                      10.102.40.148
 Port:                     <unset>  80/TCP
 TargetPort:               80/TCP
 NodePort:                 <unset>  30987/TCP
-Endpoints:                <none>
+Endpoints:                10.244.120.109:80,10.244.120.110:80,10.244.120.111:80 + 1 more...
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Events:                   <none>
@@ -68,7 +68,7 @@ Name:             zad2-ingress-service
 Labels:           <none>
 Namespace:        zad2-ns
 Address:          
-Ingress Class:    nginx-example
+Ingress Class:    <none>
 Default backend:  <default>
 Rules:
   Host        Path  Backends
@@ -77,3 +77,5 @@ Rules:
               /   zad2-node-service:80 (<none>)
 Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
 Events:       <none>
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ minikube service zad2-node-service -n zad2-ns --url
+http://192.168.49.2:30987
