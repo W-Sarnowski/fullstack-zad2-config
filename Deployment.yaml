@@ -22,7 +22,6 @@ spec:
     spec:
       containers:
       - name: zad2-server
-        # Upload image first
-        image: nginx:1.14.2
+        image: scoutertf2/zad2:8b6f71b416aa51ef15ba2b89f37dbcafc1431f60
       dnsPolicy: ClusterFirst
       restartPolicy: Always
