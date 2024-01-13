@@ -22,6 +22,6 @@ spec:
     spec:
       containers:
       - name: zad2-server
-        image: scoutertf2/zad2:8b6f71b416aa51ef15ba2b89f37dbcafc1431f60
+        image: scoutertf2/zad2:c7cc3e9ecb5bcb35e315a70e5e4748aabf81322d
       dnsPolicy: ClusterFirst
       restartPolicy: Always
