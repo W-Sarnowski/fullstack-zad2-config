@@ -8,8 +8,8 @@ spec:
   - host: zad2.lab
     http:
       paths:
-      - path: "/"
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/"
         backend:
           service:
             name: zad2-node-service

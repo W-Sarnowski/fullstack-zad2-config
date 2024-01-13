@@ -79,3 +79,14 @@ Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
 Events:       <none>
 djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ minikube service zad2-node-service -n zad2-ns --url
 http://192.168.49.2:30987
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ curl http://192.168.49.2:30987
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zadanie 2</title>
+  </head>
+  <body>
+    <h1>Wojciech Sarnowski</h1>
+    <h2>ver1</h2>
+  </body>
+</html>
