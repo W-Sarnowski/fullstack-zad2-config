@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: zad2-ingress-service
   namespace: zad2-ns
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx-example
   rules:
