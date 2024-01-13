@@ -5,6 +5,8 @@ metadata:
   namespace: zad2-ns
   labels:
     app: zad2-server
+  annotations:
+    kubernetes.io/change-cause: "v1.9"
 spec:
   replicas: 4
   selector:
