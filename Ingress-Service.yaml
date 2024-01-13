@@ -4,7 +4,6 @@ metadata:
   name: zad2-ingress-service
   namespace: zad2-ns
 spec:
-  ingressClassName: nginx-example
   rules:
   - host: zad2.lab
     http:
