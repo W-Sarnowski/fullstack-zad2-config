@@ -1,0 +1,79 @@
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ kubectl get all --namespace=zad2-ns
+NAME                                   READY   STATUS              RESTARTS   AGE
+pod/zad2-deployment-8699cdc45f-nhk5p   0/1     ContainerCreating   0          13s
+pod/zad2-deployment-8699cdc45f-nvjzz   1/1     Running             0          13s
+pod/zad2-deployment-8699cdc45f-p2svp   0/1     ContainerCreating   0          13s
+pod/zad2-deployment-8699cdc45f-t5bkf   1/1     Running             0          13s
+
+NAME                        TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/zad2-node-service   NodePort   10.102.40.148   <none>        80:30987/TCP   2m13s
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/zad2-deployment   1/4     4            1           13s
+
+NAME                                         DESIRED   CURRENT   READY   AGE
+replicaset.apps/zad2-deployment-8699cdc45f   4         4         2       13s
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ kubectl describe deployment zad2-deployment -n zad2-ns
+Name:                   zad2-deployment
+Namespace:              zad2-ns
+CreationTimestamp:      Sat, 13 Jan 2024 21:56:02 +0100
+Labels:                 app=zad2-server
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=zad2-server
+Replicas:               4 desired | 4 updated | 4 total | 4 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  2 max unavailable, 5 max surge
+Pod Template:
+  Labels:  app=zad2-server
+  Containers:
+   zad2-server:
+    Image:        scoutertf2/zad2:de3d3b60931ee5fdd0b9031c4cf31707b2b2f0b9
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   zad2-deployment-8699cdc45f (4/4 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  5m31s  deployment-controller  Scaled up replica set zad2-deployment-8699cdc45f to 4
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ kubectl describe service zad2-node-service -n zad2-ns
+Name:                     zad2-node-service
+Namespace:                zad2-ns
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app.kubernetes.io/name=zad2,app=zad2-server
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.102.40.148
+IPs:                      10.102.40.148
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30987/TCP
+Endpoints:                <none>
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Events:                   <none>
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ kubectl describe ingress zad2-ingress-service -n zad2-ns
+Name:             zad2-ingress-service
+Labels:           <none>
+Namespace:        zad2-ns
+Address:          
+Ingress Class:    nginx-example
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  zad2.lab    
+              /   zad2-node-service:80 (<none>)
+Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
+Events:       <none>
