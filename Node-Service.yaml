@@ -6,7 +6,6 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app.kubernetes.io/name: zad2
     app: zad2-server
   ports:
     - port: 80
