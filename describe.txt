@@ -79,6 +79,17 @@ Annotations:  nginx.ingress.kubernetes.io/rewrite-target: /
 Events:       <none>
 djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ minikube service zad2-node-service -n zad2-ns --url
 http://192.168.49.2:30987
+djkrnl@djkrnl-VirtualBox:~/Pobrane$ sudo cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       djkrnl-VirtualBox
+192.168.49.2 zad2.lab
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
 djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ curl http://192.168.49.2:30987
 <!DOCTYPE html>
 <html>
@@ -88,5 +99,28 @@ djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ curl http://192.168.49.2:30987
   <body>
     <h1>Wojciech Sarnowski</h1>
     <h2>ver1</h2>
+  </body>
+</html>
+djkrnl@djkrnl-VirtualBox:~/Pobrane/zad2$ curl zad2.lab
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zadanie 2</title>
+  </head>
+  <body>
+    <h1>Wojciech Sarnowski</h1>
+    <h2>ver1</h2>
+  </body>
+</html>
+---Po zmianie
+djkrnl@djkrnl-VirtualBox:~/Pobrane$ curl zad2.lab
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zadanie 2</title>
+  </head>
+  <body>
+    <h1>Wojciech Sarnowski</h1>
+    <h2>ver2</h2>
   </body>
 </html>
